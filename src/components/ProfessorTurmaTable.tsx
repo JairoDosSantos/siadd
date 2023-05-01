@@ -1,5 +1,5 @@
 import nookies from 'nookies';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { api } from '../service/api';
@@ -21,14 +21,20 @@ const ProfessorTurmaTable: React.FC = () => {
     const [searchTurma, setSearchTurma] = useState("")
 
 
-    //Buscar o ID do professor no COOKIE
-    const { USER_LOGGED_CAD } = nookies.get(null)
-    const user = JSON.parse(USER_LOGGED_CAD);
+    let [user, setUser] = useState<any>(null)
+
+    useEffect(() => {
+        //Buscar ID do professor logado no Cookie
+
+        //Buscar ID do professor logado no Cookie
+        const { USER_LOGGED_CAD } = nookies.get(null)
+        const user = JSON.parse(USER_LOGGED_CAD);
+        setUser(user)
+    }, [])
 
     const idDocente = user?.id;
 
     const getAllTurmaDocente = async () => {
-        const idDocente = 1;
         try {
             const getTurmaDocente = await api.get(`/turma/docente/${idDocente}`)
             return getTurmaDocente.data as TurmaDocenteType[]
