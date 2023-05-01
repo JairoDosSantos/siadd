@@ -1,5 +1,5 @@
 import nookies from 'nookies';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { api } from '../service/api';
@@ -19,10 +19,13 @@ const MinhasDisciplinasTable: React.FC = () => {
 
 
     const [searchDisciplina, setSearchDisciplina] = useState("")
-
-    //Buscar ID do professor logado no Cookie
-    const { USER_LOGGED_CAD } = nookies.get(null)
-    const user = JSON.parse(USER_LOGGED_CAD);
+    let [user, setUser] = useState<any>(null);
+    useEffect(() => {
+        //Buscar ID do professor logado no Cookie
+        const { USER_LOGGED_CAD } = nookies.get(null)
+        const user = JSON.parse(USER_LOGGED_CAD);
+        setUser(user)
+    }, [])
 
     const idDocente = user?.id;
     const getAllDisciplinesTeacher = async () => {
@@ -39,7 +42,7 @@ const MinhasDisciplinasTable: React.FC = () => {
 
     }
 
-    const { data, isLoading, error } = useQuery('fetchDisciplinaProfessor', getAllDisciplinesTeacher)
+    const { data, isLoading } = useQuery('fetchDisciplinaProfessor', getAllDisciplinesTeacher)
 
     const filteredDisciplina = searchDisciplina ? data?.filter((disciplina) => disciplina.descricao?.toLowerCase().includes(searchDisciplina.toLowerCase())) : []
 
