@@ -37,13 +37,13 @@ function Sidebar() {
                         <VscDashboard className='h-8 w-8' />
                         <Link href={'/'}>Dashboard</Link>
                     </li>
-                    <li className={`sideBar-link relative ${user?.nivel_acesso_id === 1 ? 'inline-block' : 'hidden'}`}>
+                    <li className={`sideBar-link relative ${user?.nivel_acesso_id === 3 ? 'flex' : 'hidden'}`}>
                         <AiOutlineTrophy className='h-8 w-8' />
                         <Link href={'/avaliacao'}>Avaliação</Link>
                         <div className='rounded-full h-2 w-2 bg-red-200 absolute top-[10px] right-9' />
-                        <div className='rounded-full h-2 w-2 bg-red-700 absolute top-[10px] right-9 animate-pulse ' />
+                        <div className='rounded-full h-2 w-2 bg-red-700 absolute top-[10px] right-9 animate-pulse' />
                     </li>
-                    <li className={`sideBar-link ${user?.nivel_acesso_id === 2 ? 'inline-block' : 'hidden'}`}>
+                    <li className={`sideBar-link ${user?.nivel_acesso_id === 2 ? 'flex' : 'hidden'}`}>
                         <VscVmActive className='h-8 w-8' />
                         <Link href={'/validar_avaliacao'} className='truncate'>Validar</Link>
                     </li>
