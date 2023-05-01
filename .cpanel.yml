@@ -2,7 +2,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/uniluand/public_html/instic.uniluanda.ao/siadd
+    - export DEPLOYPATH=/mnt/HC_Volume_27574104/uniluand/uniluand/public_html/instic.uniluanda.ao/siadd
     - /bin/cp -R .vscode $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
