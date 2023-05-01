@@ -1,3 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+
+    body,
+    input,
+    textarea,
+    button {
+        @apply font-Maven text-xs text-black dark:bg-gray-300 transition-all duration-300
+    }
+}
+
+@layer components {
+    .activo {
+        @apply  text-gray-600 bg-dourado dark:border dark:border-gray-700 dark:bg-gray-600 dark:text-dourado shadow
+    }
+ .activo-header {
+
+        @apply  border bg-blue-900/50 dark:border dark:border-gray-700 dark:bg-gray-600 dark:text-dourado shadow
+    }
+
+    .animacao-link {
+        @apply transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300
+    }
+
+    .padding-link-header {
+        @apply py-3 px-5 rounded-full flex items-center justify-center space-x-3
+    }
+
+    .sideBar-link {
+        @apply flex flex-col items-center justify-center rounded-3xl animacao-link text-gray-600 dark:text-gray-400 py-5 px-4 w-24 cursor-pointer space-y-2
+    }
+
+    .botao-icone {
+        @apply flex space-x-2 items-center justify-center rounded shadow border bg-azul dark:bg-dourado text-gray-300 dark:text-white font-bold px-2 py-1
+    }
+
+    .botao-qtd {
+        @apply text-lg
+    }
+
+    .text-icone {
+        @apply hidden lg:flex
+    }
+
+    .caixa-texto {
+        @apply rounded shadow dark:bg-gray-100 border border-gray-300
+    }
+
+    .legenda-input {
+        @apply font-bold text-sm
+    }
+}
